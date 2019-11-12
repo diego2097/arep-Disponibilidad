@@ -7,10 +7,10 @@ el sistema efectivamente escala bajo condiciones determinadas de carga
 
 ## Desarrollo 
 
-1. Idee un problema interesante que necesite una solución distribida y que necesite alto consumo de procesamiento, 
+### 1. Idee un problema interesante que necesite una solución distribida y que necesite alto consumo de procesamiento, 
 por ejemplo, ordenamiento de cadenas, indexación de grandes cantidades de texto, etc.. Genere los requerimientos mínimos.
 
-2. Construya un prototipo de la solución.
+### 2. Construya un prototipo de la solución.
 
 El problema elegido es el ordenamiento de cadenas, se tiene un servicio web el cual se encarga de ordenar las cadenas que sean ingresadas. 
 
@@ -24,7 +24,7 @@ lista de cadenas para que sean ordenadas alfabeticamente.
 
 ![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/order.PNG "ordenadas")
 
-3. Despliegue la solución en AWS en EC2.
+### 3. Despliegue la solución en AWS en EC2.
 
 Se desplega el servicio en una maquina EC2, como se puede observar a continuacion: 	
 
@@ -34,7 +34,7 @@ Se desplega el servicio en una maquina EC2, como se puede observar a continuacio
 ![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/servicio.PNG "servicio")
 
 
-4. Configure la máquina para que inicie los servicios una vez se reinicia el servidor
+### 4. Configure la máquina para que inicie los servicios una vez se reinicia el servidor
 
 Para configurar que el servicio se inicie con la maquina, utilice systemd el cual es una herramienta desarrollada por Red Hat la cual permite 
 iniciar y detener servicios de la maquina. 
