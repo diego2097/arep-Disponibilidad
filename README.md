@@ -24,7 +24,61 @@ lista de cadenas para que sean ordenadas alfabeticamente.
 
 ![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/order.PNG "ordenadas")
 
+3. Despliegue la solución en AWS en EC2.
+
+Se desplega el servicio en una maquina EC2, como se puede observar a continuacion: 	
+
+
+![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/EC2.PNG "ec2")
+
+![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/servicio.PNG "servicio")
+
+
+4. Configure la máquina para que inicie los servicios una vez se reinicia el servidor
+
+Para configurar que el servicio se inicie con la maquina, utilice systemd el cual es una herramienta desarrollada por Red Hat la cual permite 
+iniciar y detener servicios de la maquina. 
+
+Primero se debe crear el servicio: 
+
+![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/myservice.PNG "myservice")
+
+En la variable ExecStart se indica el proceso a correr, se puede utilizar un script .sh o simplemente indicar el comando a ejecutar. 
+
+Despues de esto se debe copiar este archivo en la direccion  /etc/systemd/system/
+
+y otorgale permisos de ejecucion 
+
+![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/startservice.PNG "start")
+
+
+podemos ver con status que el programa se esta ejecutando en el background, ahora para que se ejecute cada vez que se inicie la maquina simplemente 
+debemos ejecutar el comando
+
+```linux
+sudo systemctl enable myservice
+``` 
+
+ejecutamos el comando y debemos obtener la siguiente respuesta 
+
+![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/startservice.PNG "enable")
+
+Ahora reiniciamos la maquina y al obtener el status de nuestro servicio este debe estar corriendo. 
+
+![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/running.PNG "enable")
 
 
 
-	
+
+
+
+ 
+
+
+
+
+
+
+
+
+

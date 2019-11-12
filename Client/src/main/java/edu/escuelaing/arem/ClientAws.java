@@ -7,7 +7,7 @@ package edu.escuelaing.arem;
 public class ClientAws 
 {
      public static int clients = 1000;
-    public static String url  = "http://localhost:4567/ordenar?cadena=";
+    public static String url  = "http://54.236.159.234:4567/ordenar?cadena=";
 
     /**
      * @param args the command line arguments

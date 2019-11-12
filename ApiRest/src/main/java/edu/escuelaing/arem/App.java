@@ -1,5 +1,7 @@
 package edu.escuelaing.arem;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import spark.Request;
 import spark.Response;
 import static spark.Spark.*;
@@ -11,13 +13,9 @@ import static spark.Spark.*;
 public class App {
 
     public static void main(String[] args) {
-       // secure("deploy/keystore.jks", "password", null, null);
-
         port(getPort());
-        get("/multiplicar", (req, res) -> multiplicar(req, res));
-        get("/dividir", (req, res) -> dividir(req, res));
-        get("/sumar", (req, res) -> sumar(req, res));
-        get("/restar", (req, res) -> restar(req, res));
+        get("/", (req, res) -> index(req, res));
+        get("/ordenar", (req, res) -> ordenar(req, res));
     }
 
     static int getPort() {
@@ -27,23 +25,45 @@ public class App {
         return 4567; //returns default port if heroku-port isn't set (i.e. on localhost)
     }
 
-    private static String multiplicar(Request rq, Response rp) {
-        String response = Integer.toString(Integer.parseInt(rq.queryParams("num1")) * Integer.parseInt(rq.queryParams("num2")));
-        return response;
+    private static String index(Request rq, Response rp) {
+        String pagina = "<!DOCTYPE html>\n"
+                + "<html>\n"
+                + "<body>\n"
+                + "<h1>Ordenador de cadenas</h1>\n"
+                + "<p>Dada una lista de cadenas, el programa las ordena en orden alfabetico.</p>\n"
+                + "<form action=\"/ordenar\">"
+                + "Ingrese la lista separada por comas:<br>\n"
+                + "<input type=\"text\" name=\"cadena\" placeholder=\"cadena\"><br>\n"
+                + "<input type=\"submit\" value=\"Ordenar\">\n"
+                + "</form>\n"
+                + "</body>\n"
+                + "</html>\n";
+        return pagina;
     }
 
-    private static String dividir(Request rq, Response rp) {
-        String response = Integer.toString(Integer.parseInt(rq.queryParams("num1")) / Integer.parseInt(rq.queryParams("num2")));
-        return response;
-    }
-
-    private static String sumar(Request rq, Response rp) {
-        String response = Integer.toString(Integer.parseInt(rq.queryParams("num1")) + Integer.parseInt(rq.queryParams("num2")));
-        return response;
-    }
-
-    private static String restar(Request rq, Response rp) {
-        String response = Integer.toString(Integer.parseInt(rq.queryParams("num1")) - Integer.parseInt(rq.queryParams("num2")));
-        return response;
+    private static String ordenar(Request rq, Response rp) {
+        String response = rq.queryParams("cadena");
+        String[] parts = response.split(",");
+        ArrayList<String> lista = new ArrayList<String>();
+        for (int i = 0; i < parts.length; i++) {
+            lista.add(parts[i]);
+        }
+        Collections.sort(lista);
+       
+        String cad = lista.get(0);
+        for (int i = 1; i < lista.size(); i++) {
+            cad = cad + "," + lista.get(i);
+        }
+         String pagina = "<!DOCTYPE html>\n"
+                + "<html>\n"
+                + "<body>\n"
+                + "<h2>lista ordenada en orden alfabetico </h2>\n"
+                + cad 
+                + "<form action=\"/\">"
+                + "<input type=\"submit\" value=\"volver\">\n"
+                + "</form>\n"
+                + "</body>\n"
+                + "</html>\n";
+        return pagina;
     }
 }
