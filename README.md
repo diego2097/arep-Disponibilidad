@@ -61,11 +61,11 @@ sudo systemctl enable myservice
 
 ejecutamos el comando y debemos obtener la siguiente respuesta 
 
-![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/startservice.PNG "enable")
+![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/enable.PNG "enable")
 
 Ahora reiniciamos la maquina y al obtener el status de nuestro servicio este debe estar corriendo. 
 
-![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/running.PNG "enable")
+![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/running.PNG "running")
 
 
 
