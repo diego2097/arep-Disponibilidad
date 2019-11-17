@@ -71,7 +71,7 @@ Ahora reiniciamos la maquina y al obtener el status de nuestro servicio este deb
 
 Creamos una imagen de nuestra maquina 
 
-![Imágen 1](img/imagen.PNG)
+![Imágen 1](img/Imagen.PNG)
 
 #### creacion del template
 
@@ -93,7 +93,7 @@ Despues de esto configuramos el vpc como se observa a continuacion
 Y finalizamos la creacion de nuestro template 
 
 
-![Imágen 1](img/creacion-template.PNG)
+![Imágen 1](img/create-template.PNG)
 
 
 
