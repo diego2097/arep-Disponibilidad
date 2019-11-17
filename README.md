@@ -67,6 +67,127 @@ Ahora reiniciamos la maquina y al obtener el status de nuestro servicio este deb
 
 ![alt text](https://github.com/diego2097/arep-Disponibilidad/blob/master/img/running.PNG "running")
 
+### Cree un AMI a partir de esta máquina
+
+Creamos una imagen de nuestra maquina 
+
+![Imágen 1](img/imagen.PNG)
+
+#### creacion del template
+
+Elegimos la imagen que creamos de nuestra maquina EC2 
+
+![Imágen 1](img/imagen2.PNG)
+
+Configuramos el id del AMI, seleccionamos amazon linux 2 ya que es el servicio gratis. Seleccionamos el tipo de instancia de la EC2 el cual 
+es t2.micro y por ultimo elegimos las llaves para el acceso a la maquina. 
+
+![Imágen 1](img/template.PNG)
+
+Despues de esto configuramos el vpc como se observa a continuacion 
+
+
+![Imágen 1](img/vpc-template.PNG)
+
+
+Y finalizamos la creacion de nuestro template 
+
+
+![Imágen 1](img/creacion-template.PNG)
+
+
+
+### creacion configuracion de lanzamiento 
+
+Pasamos a configurar el lanzamiento, para esto debemos elegir el AMI. 
+
+
+![Imágen 1](img/configuracion.PNG)
+
+Elegimos el tipo de instancia, en nuestro caso es t2 micro. 
+
+![Imágen 1](img/configuracion2.PNG)
+
+Configuramos el lanzamiento para que le asigne una ip publica a cada instancia
+
+![Imágen 1](img/configuracion3.PNG)
+
+Y seleccionamos omitir para revisar
+
+Ahora en review seleccionamos la opcion editar grupos de seguridad, esto para indicar los puertos por los que se tendra acceso a nuestra aplicacion
+
+![Imágen 1](img/configuracion4.PNG)
+
+Despues de esto seleccionamos analisis y finalmente crear configuracion de lanzamiento. Aqui debemos elegir las llaves que usamos para el acceso a la
+maquina EC2 
+
+![Imágen 1](img/configuracion5.PNG)
+
+### creacion del grupo de auto escalamiento 
+
+Despues de esto pasamos a crear el grupo de auto esacalamiento, como se observa en la imagen 
+
+![Imágen 1](img/grupo.PNG)
+
+Ahora debemos configurar la politica de escalado para que cuando el consumo de cpu supere el 75% se cree una nueva instancia. 
+
+![Imágen 1](img/alarma.PNG)
+
+Tambien anadimos una para reducir el tamano de las instancias cuando el consumo de CPU este por debajo del 25% durante 5 minutos.
+
+![Imágen 1](img/alarma2.PNG)
+
+Por ultimo creamos el grupo de escalamiento. 
+
+![Imágen 1](img/creacion.PNG)
+
+![Imágen 1](img/creacion2.PNG)
+
+### Monitoreo 
+
+Comenzamos con una instancia de nuestra maquina como se puede observar en la imagen. 
+
+![Imágen 1](img/ejemplo.PNG)
+
+
+Ahora mandamos las peticiones y esperamos que se cree una nueva instancia. 
+
+
+![Imágen 1](img/solicitudes.PNG)
+
+
+Y como es de esperarse se crea una nueva instancia de nuestra maquina al superar el limite de uso de cpu que esta en 75% 
+
+
+![Imágen 1](img/Ejemplo2.PNG)
+
+
+y si monitoreamos el performance la primera maquina podemos ver que efectivamente el uso de cpu llega a ese porcentaje y ahi se crea una nueva instancia
+
+
+![Imágen 1](img/cpu.PNG)
+
+
+
+## Autor 
+
+- Diego Alejandro Corredor Tolosa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
